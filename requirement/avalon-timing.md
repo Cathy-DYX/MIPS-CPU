@@ -18,7 +18,7 @@ Memory that does not use `waitrequest`
 The simplest case is when interacting with a RAM that does not use `waitrequest`,
 so it is always ready for transactions.
 
-![Avalon bus waveforms with no waitstate](avalon-waveforms-no-wait.png)
+![Avalon bus waveforms with no waitstate](img/avalon-waveforms-no-wait.png)
 
 All signals are clock synchronous (this is a requirement of the Avalon bus), so we
 only care what the signals are doing at the clock edge. Looking along the bottom
@@ -51,7 +51,7 @@ Another case is a RAM that keeps `waitrequest` high until a request is made, and
 then lowers it for a cycle once the data is ready. This is common if multiple
 peripherals are multiplexed into one bus in order to reduce latency.
 
-![Avalon reactive wait](avalon-waveforms-reactive-wait.png)
+![Avalon reactive wait](img/avalon-waveforms-reactive-wait.png)
 
 In this case the master tries to start transaction `Ar` at clock edge 2, but
 finds that `waitrequest` is asserted. It must retry the same transaction on the
@@ -69,7 +69,7 @@ Memory with variable wait states
 Some memories may insert wait states in quite unpredictable ways, so they
 might keep `waitrequest` low most of the time, but then occasionally assert it.
 
-![Avalon variable wait](avalon-waveforms-variable-wait.png)
+![Avalon variable wait](img/avalon-waveforms-variable-wait.png)
 
 It is important to note that all signals are clock sensitive in Avalon. This
 means that `waitrequest` cannot be a response to the address being given,
