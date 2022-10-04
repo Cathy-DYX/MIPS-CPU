@@ -7,8 +7,17 @@ rm ./test/RESULT.out
 ./test/build_utils.sh
 set -eou pipefail
 
+if [ ! -d test/2-simulator ]; then
+  mkdir -p test/2-simulator;
+fi
+if [ ! -d test/3-output ]; then
+  mkdir -p test/3-output;
+fi
+if [ ! -d test/4-reference ]; then
+  mkdir -p test/4-reference;
+fi
+
 if [ "${instruction}" == "1" ] ; then
-   
     INSTRUCTIONS="test/1-hex/mem_1/AUTO_*"
     GENERAL_TESTCASES="test/1-hex/mem_1/general/*"
     Word="AUTO_"

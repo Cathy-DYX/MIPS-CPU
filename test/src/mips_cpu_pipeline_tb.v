@@ -26,13 +26,13 @@ module mips_cpu_pipeline_tb (
         $finish;
     end
 
-    always @(*) begin
-        if(active == 0)begin
-            $display("CPU MIPS : V0 = %d", register_v0);
-            $display("Count:",count);
-            $finish;
-        end
-    end
+    // always @(*) begin
+        // if(active == 0)begin
+        //     $display("CPU MIPS : V0 = %d", register_v0);
+        //     $display("Count:",count);
+        //     $finish;
+        // end
+    // end
     
     initial begin
         reset = 0;
@@ -46,6 +46,13 @@ module mips_cpu_pipeline_tb (
 
         while(active)begin
             @(negedge clk);
+            
+        end
+
+        if(active == 0)begin
+            $display("CPU MIPS : V0 = %d", register_v0);
+            $display("Count:",count);
+            $finish;
         end
         
     end

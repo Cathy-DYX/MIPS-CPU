@@ -27,13 +27,13 @@ module mips_cpu_tb (
         $finish;
     end
 
-    always @(*) begin
-        if(active == 0)begin
-            $display("CPU MIPS : V0 = %d", register_v0);
-            $display("Count:",count);
-            $finish;
-        end
-    end
+    // always @(*) begin
+        // if(active == 0)begin
+        //     $display("CPU MIPS : V0 = %d", register_v0);
+        //     $display("Count:",count);
+        //     $finish;
+        // end
+    // end
     
     initial begin
         reset = 0;
@@ -49,6 +49,11 @@ module mips_cpu_tb (
             @(negedge clk);
         end
         
+        if(active == 0)begin
+            $display("CPU MIPS : V0 = %d", register_v0);
+            $display("Count:",count);
+            $finish;
+        end
     end
 
     mips_cpu_bus cpu(
